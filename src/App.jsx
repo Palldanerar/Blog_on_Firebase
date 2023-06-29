@@ -36,7 +36,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home />}
+          element={<Home isAuth={isAuth} />}
         />
         <Route
           path="/create"
