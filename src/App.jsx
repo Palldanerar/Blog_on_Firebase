@@ -26,7 +26,7 @@ function App() {
     <>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/create">Create Post</Link>
+        {isAuth && <Link to="/create">Create Post</Link>}
         {!isAuth ? (
           <Link to="/login">Login</Link>
         ) : (
