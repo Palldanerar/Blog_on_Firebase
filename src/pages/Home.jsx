@@ -1,6 +1,7 @@
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { database, auth } from "../firebase";
+import { Link } from "react-router-dom";
 
 const Home = ({ isAuth }) => {
   const [postsList, setPostsList] = useState([]);
@@ -25,10 +26,16 @@ const Home = ({ isAuth }) => {
     <div className="homePage">
       {postsList.map((post) => {
         return (
-          <div className="post">
+          <div
+            key={post.id}
+            className="post"
+          >
+            <img src={post.url} />
             <div className="postHeader">
               <div className="title">
-                <h1> {post.title}</h1>
+                <Link to={`edit/${post.id}`}>
+                  <h2>{post.title}</h2>
+                </Link>
               </div>
               <div className="deletePost">
                 {isAuth && post.author.id === auth.currentUser.uid && (

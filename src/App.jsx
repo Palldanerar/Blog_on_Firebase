@@ -1,6 +1,7 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import CreatePost from "./pages/CreatePost";
+import EditPost from "./pages/EditPost";
 import Login from "./pages/Login";
 import { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
@@ -45,6 +46,10 @@ function App() {
         <Route
           path="/login"
           element={<Login setIsAuth={setIsAuth} />}
+        />
+        <Route
+          path="/edit/:id"
+          element={<EditPost />}
         />
       </Routes>
     </>
