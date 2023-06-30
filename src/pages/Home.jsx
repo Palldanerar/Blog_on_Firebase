@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Home = ({ isAuth }) => {
   const [postsList, setPostsList] = useState([]);
   const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("");
 
   const postCollectionRef = collection(database, "posts");
 
@@ -25,16 +26,26 @@ const Home = ({ isAuth }) => {
 
   function searchPost() {
     if (search == "") {
-      return postsList;
+      return filterPost();
     }
-    return [...postsList].filter((post) =>
-      post.title.includes(search.toLocaleLowerCase())
+    return [...filterPost()].filter((post) =>
+      post.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
     );
   }
 
-  useEffect(() => {
-    searchPost();
-  }, [search]);
+  function filterPost() {
+    if (!filter) {
+      return postsList;
+    }
+
+    return [...postsList].filter((post) => {
+      for (let i = 0; i < post.category.length; i++) {
+        if (post.category[i] == filter) {
+          return true;
+        }
+      }
+    });
+  }
 
   return (
     <div className="homePage">
@@ -46,7 +57,7 @@ const Home = ({ isAuth }) => {
           setSearch(e.target.value);
         }}
       />
-      {searchPost() ? (
+      {searchPost().length == 0 ? (
         <h2 className="w-h2">Ничего не найдено</h2>
       ) : (
         searchPost().map((post) => {
@@ -84,6 +95,9 @@ const Home = ({ isAuth }) => {
                   : `${post.body.substr(0, 249)}...`}
               </div>
               <h4>@{post.author.name}</h4>
+              {post.category.map((item) => (
+                <button onClick={() => setFilter(item)}>{item}</button>
+              ))}
             </div>
           );
         })

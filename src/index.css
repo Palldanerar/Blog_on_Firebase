@@ -23,6 +23,7 @@ nav {
   align-items: center;
   color: white;
   text-decoration: none;
+  gap: 10px;
 }
 
 a {
