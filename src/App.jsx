@@ -31,7 +31,12 @@ function App() {
         {!isAuth ? (
           <Link to="/login">Login</Link>
         ) : (
-          <button onClick={singUserOut}>Log Out</button>
+          <button
+            className="btn-singOut"
+            onClick={singUserOut}
+          >
+            Вы вошли как {auth.currentUser.displayName}
+          </button>
         )}
       </nav>
       <Routes>

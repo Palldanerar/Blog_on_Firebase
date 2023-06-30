@@ -198,3 +198,26 @@ textarea {
   overflow: hidden;
   overflow-y: auto;
 }
+
+.input-search {
+  width: 600px;
+  padding: 5px 9px;
+  border-radius: 7px;
+  border: 1px solid black;
+  font-size: 18px;
+}
+
+.w-h2 {
+  margin-top: 60px;
+}
+
+.btn-singOut {
+  background: green;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
