@@ -33,9 +33,12 @@ const Home = ({ isAuth }) => {
             <img src={post.url} />
             <div className="postHeader">
               <div className="title">
-                <Link to={`edit/${post.id}`}>
-                  <h2>{post.title}</h2>
-                </Link>
+                <h2>{post.title}</h2>
+              </div>
+              <div className="deletePost">
+                {isAuth && post.author.id === auth.currentUser.uid && (
+                  <Link to={`edit/${post.id}`}>🖊️</Link>
+                )}
               </div>
               <div className="deletePost">
                 {isAuth && post.author.id === auth.currentUser.uid && (
@@ -50,7 +53,11 @@ const Home = ({ isAuth }) => {
                 )}
               </div>
             </div>
-            <div className="postTextContainer">{post.body}</div>
+            <div className="postTextContainer">
+              {post.body.length < 150
+                ? post.body
+                : `${post.body.substr(0, 249)}...`}
+            </div>
             <h4>@{post.author.name}</h4>
           </div>
         );
