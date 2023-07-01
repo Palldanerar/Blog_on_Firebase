@@ -35,7 +35,7 @@ function App() {
             className="btn-singOut"
             onClick={singUserOut}
           >
-            Вы вошли как {auth.currentUser.displayName}
+            Вы вошли как
           </button>
         )}
       </nav>
