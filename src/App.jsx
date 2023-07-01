@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
+import FullPost from "./pages/FullPost";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -55,6 +56,10 @@ function App() {
         <Route
           path="/edit/:id"
           element={<EditPost />}
+        />
+        <Route
+          path="/post/:id"
+          element={<FullPost />}
         />
       </Routes>
     </>

@@ -10,10 +10,10 @@ const Home = ({ isAuth }) => {
 
   const postCollectionRef = collection(database, "posts");
 
-  const deletePost = async (id) => {
-    const postDoc = doc(database, "posts", id);
-    await deleteDoc(postDoc);
-  };
+  // const deletePost = async (id) => {
+  //   const postDoc = doc(database, "posts", id);
+  //   await deleteDoc(postDoc);
+  // };
 
   useEffect(() => {
     const getPosts = async () => {
@@ -22,7 +22,7 @@ const Home = ({ isAuth }) => {
     };
 
     getPosts();
-  }, [deletePost]);
+  }, []);
 
   function searchPost() {
     if (search == "") {
@@ -62,42 +62,27 @@ const Home = ({ isAuth }) => {
       ) : (
         searchPost().map((post) => {
           return (
-            <div
-              key={post.id}
-              className="post"
-            >
-              <img src={post.url} />
-              <div className="postHeader">
-                <div className="title">
-                  <h2>{post.title}</h2>
+              <div
+                key={post.id}
+                className="post"
+              >
+              <Link className="link" to={`/post/${post.id}`}>
+                <img src={post.url} />
+                <div className="postHeader">
+                  <div className="title">
+                    <h2>{post.title}</h2>
+                  </div>
                 </div>
-                <div className="deletePost">
-                  {isAuth && post.author.id === auth.currentUser.uid && (
-                    <Link to={`edit/${post.id}`}>🖊️</Link>
-                  )}
+                <div className="postTextContainer">
+                  {post.body.length < 150
+                    ? post.body
+                    : `${post.body.substr(0, 249)}...`}
                 </div>
-                <div className="deletePost">
-                  {isAuth && post.author.id === auth.currentUser.uid && (
-                    <button
-                      onClick={() => {
-                        deletePost(post.id);
-                      }}
-                    >
-                      {" "}
-                      &#128465;
-                    </button>
-                  )}
-                </div>
-              </div>
-              <div className="postTextContainer">
-                {post.body.length < 150
-                  ? post.body
-                  : `${post.body.substr(0, 249)}...`}
-              </div>
-              <h4>@{post.author.name}</h4>
-              {post.category.map((item) => (
-                <button onClick={() => setFilter(item)}>{item}</button>
-              ))}
+                </Link>
+                <h4>@{post.author.name}</h4>
+                {post.category.map((item) => (
+                  <button onClick={() => setFilter(item)}>{item}</button>
+                ))}
             </div>
           );
         })

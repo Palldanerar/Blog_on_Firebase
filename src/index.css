@@ -37,6 +37,7 @@ img {
   width: 100%;
   height: auto;
   object-fit: cover;
+  border-radius: 7px;
 }
 
 .createPostPage {
@@ -45,6 +46,10 @@ img {
   display: grid;
   place-items: center;
   margin-top: 15px;
+}
+
+.link {
+  color: black;
 }
 
 .cpContainer {
