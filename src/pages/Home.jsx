@@ -74,9 +74,11 @@ const Home = ({ isAuth }) => {
                     : `${post.body.substr(0, 249)}...`}
                 </div>
                 </Link>
-                {post.category.map((item, index) => (
-                  <button onClick={() => setFilter(item == filter ? "" : item)} key={index} className="tag">{item}</button>
-                ))}
+                <div className="tagsCp">
+                  {post.category.map((item, index) => (
+                    <button onClick={() => setFilter(item == filter ? "" : item)} key={index} className="tag">{item}</button>
+                  ))}
+                </div>
                 <h4>@{post.author.name}</h4>
             </div>
           );
