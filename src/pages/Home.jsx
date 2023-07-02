@@ -75,7 +75,7 @@ const Home = ({ isAuth }) => {
                 </div>
                 </Link>
                 {post.category.map((item, index) => (
-                  <button onClick={() => setFilter(item)} key={index} className="tag">{item}</button>
+                  <button onClick={() => setFilter(item == filter ? "" : item)} key={index} className="tag">{item}</button>
                 ))}
                 <h4>@{post.author.name}</h4>
             </div>
