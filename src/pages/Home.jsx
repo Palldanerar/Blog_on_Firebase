@@ -47,7 +47,7 @@ const Home = ({ isAuth }) => {
       <input
         className="input-search"
         type="text"
-        placeholder="Search..."
+        placeholder="Поиск..."
         onChange={(e) => {
           setSearch(e.target.value);
         }}

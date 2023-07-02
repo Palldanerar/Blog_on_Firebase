@@ -48,32 +48,32 @@ const CreatePost = () => {
   return (
     <div className="createPostPage">
       <div className="cpContainer">
-        <h1>Edit A Post</h1>
+        <h1>Редактирование</h1>
         <div className="inputGp">
-          <label>Url:</label>
+          <label>URL</label>
           <input
-            placeholder="Title..."
+            placeholder="Ссыдка"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
         </div>
         <div className="inputGp">
-          <label>Title:</label>
+          <label>Заголовок:</label>
           <input
-            placeholder="Title..."
+            placeholder="Заголовок..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="inputGp">
-          <label>Post:</label>
+          <label>Описание:</label>
           <textarea
-            placeholder="Post..."
+            placeholder="Описание..."
             value={body}
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
-        <button onClick={updatePost}>Edit Post</button>
+        <button onClick={updatePost}>Сохранить изменения</button>
       </div>
     </div>
   );

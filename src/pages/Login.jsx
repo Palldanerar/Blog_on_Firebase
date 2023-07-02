@@ -3,13 +3,15 @@ import { auth, provoder } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsAuth }) => {
+const Login = ({ setIsAuth, setUserName }) => {
   const navigation = useNavigate();
 
   const singInWithGoogle = () => {
     signInWithPopup(auth, provoder).then((result) => {
       localStorage.setItem("isAuth", true);
+      localStorage.setItem("userName", auth.currentUser.displayName);
       setIsAuth(true);
+
       navigation("/");
     });
   };

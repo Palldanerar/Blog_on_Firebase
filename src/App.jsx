@@ -10,16 +10,19 @@ import FullPost from "./pages/FullPost";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
+  const [userName, setUserName] = useState("")
   const navigation = useNavigate();
 
   useEffect(() => {
     setIsAuth(localStorage.getItem("isAuth") || false);
+    setUserName(localStorage.getItem("userName") || "")
   });
 
   const singUserOut = () => {
     signOut(auth).then(() => {
       localStorage.clear();
       setIsAuth(false);
+      setUserName("")
       navigation("/login");
     });
   };
@@ -27,23 +30,23 @@ function App() {
   return (
     <>
       <nav>
-        <Link to="/">Home</Link>
-        {isAuth && <Link to="/create">Create Post</Link>}
+        <Link to="/">Главная</Link>
+        {isAuth && <Link to="/create">Создать</Link>}
         {!isAuth ? (
-          <Link to="/login">Login</Link>
+          <Link to="/login">Войти</Link>
         ) : (
           <button
             className="btn-singOut"
             onClick={singUserOut}
           >
-            Вы вошли
+            Вы вошли как {userName}
           </button>
         )}
       </nav>
       <Routes>
         <Route
           path="/"
-          element={<Home isAuth={isAuth} />}
+          element={<Home isAuth={isAuth} setIsAuth={setUserName} />}
         />
         <Route
           path="/create"

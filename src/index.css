@@ -230,7 +230,7 @@ textarea {
 }
 
 .tag {
-  width: 80px;
+  width: auto;
   height: auto;
   padding: 3px 5px;
   background: green;

@@ -37,36 +37,36 @@ const CreatePost = () => {
   return (
     <div className="createPostPage">
       <div className="cpContainer">
-        <h1>Create A Post</h1>
+        <h1>Новая статья</h1>
         <div className="inputGp">
           <label>URL:</label>
           <input
-            placeholder="URL img..."
+            placeholder="Ссылка..."
             onChange={(e) => setUrl(e.target.value)}
           />
         </div>
         <div className="inputGp">
-          <label>Title:</label>
+          <label>Заголовок:</label>
           <input
-            placeholder="Title..."
+            placeholder="Заголовок..."
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="inputGp">
-          <label>Post:</label>
+          <label>Описание:</label>
           <textarea
-            placeholder="Post..."
+            placeholder="Описание..."
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
         <div className="inputGp">
-          <label>Category</label>
+          <label>Теги</label>
           <input
-            placeholder="Category(Separate by comma with capital)..."
+            placeholder="Теги(Через запятую с заглавной буквы)..."
             onChange={(e) => addCategory(e)}
           />
         </div>
-        <button onClick={createNewPost}>Submit Post</button>
+        <button onClick={createNewPost}>Опубликовать</button>
       </div>
     </div>
   );
