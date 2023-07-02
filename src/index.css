@@ -228,3 +228,82 @@ textarea {
   outline: none;
   cursor: pointer;
 }
+
+.tag {
+  width: 80px;
+  height: auto;
+  padding: 3px 5px;
+  background: green;
+  border-radius: 7px;
+  border: 1px solid green;
+  font-size: 16px;
+  color: white;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-left: -10px;
+}
+
+.imgFullPost {
+  width: 600px;
+
+}
+
+.fullPost {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fullPostItem {
+  width: 1200px;
+  height: auto;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fullPostTitle {
+  font-size: 36px;
+}
+
+.fullPostBody {
+  width: 100%;
+  height: auto;
+  background-color: rgb(250, 250, 250);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.settingFullPost {
+  width: 1200px;
+  height: auto;
+  padding: 5px 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.settingBtn {
+  width: 120px;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  margin-left: 15px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.edit {
+  background: green;
+}
+
+.del {
+  background-color: red;
+}

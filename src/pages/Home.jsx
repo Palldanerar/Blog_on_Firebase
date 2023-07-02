@@ -1,6 +1,6 @@
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { database, auth } from "../firebase";
+import { database } from "../firebase";
 import { Link } from "react-router-dom";
 
 const Home = ({ isAuth }) => {
@@ -9,11 +9,6 @@ const Home = ({ isAuth }) => {
   const [filter, setFilter] = useState("");
 
   const postCollectionRef = collection(database, "posts");
-
-  // const deletePost = async (id) => {
-  //   const postDoc = doc(database, "posts", id);
-  //   await deleteDoc(postDoc);
-  // };
 
   useEffect(() => {
     const getPosts = async () => {
@@ -67,7 +62,7 @@ const Home = ({ isAuth }) => {
                 className="post"
               >
               <Link className="link" to={`/post/${post.id}`}>
-                <img src={post.url} />
+                {post.url && <img src={post.url} />}
                 <div className="postHeader">
                   <div className="title">
                     <h2>{post.title}</h2>
@@ -79,10 +74,10 @@ const Home = ({ isAuth }) => {
                     : `${post.body.substr(0, 249)}...`}
                 </div>
                 </Link>
-                <h4>@{post.author.name}</h4>
-                {post.category.map((item) => (
-                  <button onClick={() => setFilter(item)}>{item}</button>
+                {post.category.map((item, index) => (
+                  <button onClick={() => setFilter(item)} key={index} className="tag">{item}</button>
                 ))}
+                <h4>@{post.author.name}</h4>
             </div>
           );
         })

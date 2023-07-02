@@ -7,7 +7,7 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [url, setUrl] = useState("")
-  const [category, setCategory] = useState(["Stydi"])
+  const [category, setCategory] = useState([])
 
   const postsCollectionRef = collection(database, "posts");
   const navigation = useNavigate();

@@ -8,6 +8,7 @@ const CreatePost = () => {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [url, setUrl] = useState("");
 
   const navigation = useNavigate();
 
@@ -18,6 +19,7 @@ const CreatePost = () => {
       await updateDoc(washingtonRef, {
         title,
         body,
+        url,
         author: {
           name: auth.currentUser.displayName,
           id: auth.currentUser.uid,
@@ -34,6 +36,7 @@ const CreatePost = () => {
       if (docSnap.exists()) {
         setTitle(docSnap.data().title);
         setBody(docSnap.data().body);
+        setUrl(docSnap.data().url)
       } else {
         navigation("/");
       }
@@ -46,6 +49,14 @@ const CreatePost = () => {
     <div className="createPostPage">
       <div className="cpContainer">
         <h1>Edit A Post</h1>
+        <div className="inputGp">
+          <label>Url:</label>
+          <input
+            placeholder="Title..."
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+        </div>
         <div className="inputGp">
           <label>Title:</label>
           <input

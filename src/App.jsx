@@ -36,7 +36,7 @@ function App() {
             className="btn-singOut"
             onClick={singUserOut}
           >
-            Вы вошли как
+            Вы вошли
           </button>
         )}
       </nav>
@@ -59,7 +59,7 @@ function App() {
         />
         <Route
           path="/post/:id"
-          element={<FullPost />}
+          element={<FullPost isAuth={isAuth} />}
         />
       </Routes>
     </>
